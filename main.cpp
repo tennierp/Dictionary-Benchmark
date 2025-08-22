@@ -17,9 +17,9 @@ std::vector<int> generate_keys(int N) {
 
     // Uses a random distribution to generate keys randomly
 
-    std::vector<int> keys(N);
-    std::mt19937 rng(42);  //
-    std::uniform_int_distribution<int> dist(1, 500 * N);
+    std::vector<int> keys(N); //vector with size N
+    std::mt19937 rng(42);  // seed
+    std::uniform_int_distribution<int> dist(1, 500 * N); // random numbers between the range 1 and 500*N
 
     for (int& k : keys)
         k = dist(rng);
@@ -63,9 +63,9 @@ int main() {
     std::vector<int> sizeV = {5000, 500000};
     for (auto N : sizeV) {
             benchmark(new UnsortedVectorDict(), "Unsorted Vector", N, csv);
-            benchmark(new SortedVectorDict(), "Sorted Vector", N, csv);
+            //benchmark(new SortedVectorDict(), "Sorted Vector", N, csv);
             benchmark(new UnsortedLinkedListDict(), "Unsorted Linked List", N, csv);
-            benchmark(new SortedLinkedListDict(), "Sorted Linked List", N, csv);
+            //benchmark(new SortedLinkedListDict(), "Sorted Linked List", N, csv);
     }
 
     csv.close();
